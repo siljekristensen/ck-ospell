@@ -1,0 +1,19 @@
+{
+  "name": "ck-ospell",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pascal Hertleif <killercup@gmail.com> (http://pascalhertleif.de/)",
+  "license": "MIT",
+  "dependencies": {
+    "ckeditor": "^4.5.9",
+    "express": "^4.13.4",
+    "hfst-ospell-js": "github:killercup/hfst-ospell-js#6163612",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {}
+}

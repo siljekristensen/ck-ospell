@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CK OSpell</title>
+</head>
+
+<body>
+    <textarea id="editor1" cols="30" rows="10"></textarea>
+
+    <script src="../node_modules/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.config.extraPlugins = 'language,scayt';
+        CKEDITOR.config.scayt_multiLanguageMode = true;
+        CKEDITOR.config.language_list = ['de:German'];
+    </script>
+</body>
+
+</html>

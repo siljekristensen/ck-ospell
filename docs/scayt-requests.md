@@ -12,7 +12,7 @@
 
 2. Open page with CKEditor and open developer tools
 3. Activate spell checking (ABC + checkmark icon)
-4. Analyse requests to host `svc.webspellchecker.net`
+4. Analyse requests to hostname `svc.webspellchecker.net`
 
 ## Requests
 

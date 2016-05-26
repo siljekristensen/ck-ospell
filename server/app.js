@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs");
-const express = require("express");
 const hfstospell = require("hfst-ospell-js");
 
 const H = require('./helpers');
@@ -34,9 +33,9 @@ const spellcheckers = langFiles.reduce((result, lang) => {
  * @param {express.Response} res
  * @param {express.RequestHandler} next
  */
-module.exports.getBanner = function getBanner(req, res, next) {
+module.exports.getBanner = function getBanner(req, res) {
   res.status(200).jsonp({
-    "banner": false
+    "banner": false,
   });
 }
 
@@ -47,13 +46,13 @@ module.exports.getBanner = function getBanner(req, res, next) {
  * @param {express.Response} res
  * @param {express.RequestHandler} next
  */
-module.exports.getLangList = function getLangList(req, res, next) {
+module.exports.getLangList = function getLangList(req, res) {
   res.status(200).jsonp({
     "langList": {
       "ltr": availableLanguages,
-      "rtl": {}
+      "rtl": {},
     },
-    "verLang": 6
+    "verLang": 6,
   });
 }
 
@@ -68,16 +67,16 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
   // Quick n dirty validation of query params
   const checks = [
     H.checkQueryParams("out_type", {
-      status: 400, message: "`out_type` needs to be `words`"
+      status: 400, message: "`out_type` needs to be `words`",
     }, "words"),
     H.checkQueryParams("version", {
-      status: 400, message: "No language code given"
+      status: 400, message: "No language code given",
     }),
     H.checkQueryParams("slang", {
-      status: 400, message: "No language code given"
+      status: 400, message: "No language code given",
     }),
     H.checkQueryParams("text", {
-      status: 400, message: "No text to check given"
+      status: 400, message: "No text to check given",
     }),
   ];
 
@@ -95,7 +94,7 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
 
   if (!spellchecker) {
     return next({
-      status: 400, message: "I can't spellcheck `" + lang + "`, sorry."
+      status: 400, message: "I can't spellcheck `" + lang + "`, sorry.",
     });
   }
 

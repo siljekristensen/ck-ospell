@@ -7,10 +7,10 @@ let server = express.Router();
 
 server.get(new RegExp("/spellcheck(31|)/script/ssrv.cgi"),
   H.asMiddleware(H.checkQueryParams("cmd", {
-    status: 400, message: "No command given"
+    status: 400, message: "No command given",
   })),
   H.asMiddleware(H.checkQueryParams("run_mode", {
-    status: 400, message: "Invalid `run mode` param"
+    status: 400, message: "Invalid `run mode` param",
   }, "web_service")),
   // H.asMiddleware(H.checkQueryParams("format", {
   //   status: 400, message: "Invalid `format` param"

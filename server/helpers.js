@@ -1,5 +1,3 @@
-const express = require("express");
-
 /**
  * Check Query Params
  *
@@ -55,16 +53,15 @@ module.exports.matchCommand = function matchCommand(cmd, fn) {
  * @param {express.RequestHandler} next
  */
 module.exports.errorHandler = function errorHandler(err, req, res, next) {
-  console.log(err);
   var status = err.status || err.statusCode || 500;
   if (status < 400) {
     status = 500
-  };
+  }
 
   res.status(status);
 
   var body = {
-    status: status
+    status: status,
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -73,7 +70,7 @@ module.exports.errorHandler = function errorHandler(err, req, res, next) {
 
   // internal server errors
   if (status >= 500) {
-    console.error(err.stack);
+    process.stderr.write(JSON.stringify(err.stack, null, 2));
     res.json(body);
     return;
   }

@@ -23,5 +23,5 @@ const routes = require("./server");
 server.use(routes);
 
 server.listen(3000, () => {
-  console.log("Server started!");
+  process.stdout.write("Server started!");
 });

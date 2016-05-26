@@ -9,11 +9,16 @@
 <body>
     <textarea id="editor1" cols="30" rows="10"></textarea>
 
-    <script src="../node_modules/ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/ckeditor.js"></script>
     <script>
+      (function() {
         CKEDITOR.config.extraPlugins = 'language,scayt';
         CKEDITOR.config.scayt_multiLanguageMode = true;
+        CKEDITOR.config.scayt_servicePath = "/spellcheck31/script/ssrv.cgi";
+        CKEDITOR.config.scayt_srcUrl = "/spellcheck/lf/scayt3/ckscayt/ckscayt.js";
         CKEDITOR.config.language_list = ['de:German'];
+        CKEDITOR.replace('editor1');
+      })();
     </script>
 </body>
 

@@ -1,7 +1,9 @@
 import {test} from "ava";
 const request = require("supertest-as-promised");
+const express = require("express");
 
-const app = require("./server");
+const app = express();
+app.use(require("./server"));
 
 const API = "/spellcheck/script/ssrv.cgi";
 

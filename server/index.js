@@ -1,14 +1,9 @@
-const path = require("path");
 const express = require("express");
 
 const H = require('./helpers');
 const App = require("./app");
 
-let server = express();
-
-server.use("/spellcheck/lf/scayt3/ckscayt",
-  express.static(path.join(__dirname, "../public"))
-);
+let server = express.Router();
 
 server.get("/spellcheck/script/ssrv.cgi",
   H.asMiddleware(H.checkQueryParams("cmd", {

@@ -1,8 +1,31 @@
+const path = require("path");
+const fs = require("fs");
 const express = require("express");
+const hfstospell = require("hfst-ospell-js");
 
-const banner = require("./dummy/banner.json");
-const langList = require("./dummy/langList.json");
-const spelling = require("./dummy/spelling.json");
+const H = require('./helpers');
+
+// - - -
+
+const langDirectory = path.resolve(process.cwd(), "etc");
+
+const languages = require("./definitions/langs.json");
+const langFiles = fs.readdirSync(langDirectory)
+  .filter((filename) => path.extname(filename) === ".zhfst")
+  .map((filename) => path.basename(filename, ".zhfst"));
+
+const availableLanguages = langFiles.reduce((result, lang) => {
+  if (languages[lang]) {
+    result[lang] = languages[lang];
+  }
+  return result;
+}, {});
+
+const spellcheckers = langFiles.reduce((result, lang) => {
+  const dictionaryFile = path.join(langDirectory, lang + ".zhfst");
+  result[lang] = new hfstospell.SpellChecker(dictionaryFile);
+  return result;
+}, {});
 
 /**
  * Get Banner
@@ -12,7 +35,9 @@ const spelling = require("./dummy/spelling.json");
  * @param {express.RequestHandler} next
  */
 module.exports.getBanner = function getBanner(req, res, next) {
-  res.status(200).jsonp(banner);
+  res.status(200).jsonp({
+    "banner": false
+  });
 }
 
 /**
@@ -23,7 +48,13 @@ module.exports.getBanner = function getBanner(req, res, next) {
  * @param {express.RequestHandler} next
  */
 module.exports.getLangList = function getLangList(req, res, next) {
-  res.status(200).jsonp(langList);
+  res.status(200).jsonp({
+    "langList": {
+      "ltr": availableLanguages,
+      "rtl": {}
+    },
+    "verLang": 6
+  });
 }
 
 /**
@@ -34,5 +65,57 @@ module.exports.getLangList = function getLangList(req, res, next) {
  * @param {express.RequestHandler} next
  */
 module.exports.checkSpelling = function checkSpelling(req, res, next) {
-  res.status(200).jsonp(spelling);
+  // Quick n dirty validation of query params
+  const checks = [
+    H.checkQueryParams("out_type", {
+      status: 400, message: "`out_type` needs to be `words`"
+    }, "words"),
+    H.checkQueryParams("version", {
+      status: 400, message: "No language code given"
+    }),
+    H.checkQueryParams("slang", {
+      status: 400, message: "No language code given"
+    }),
+    H.checkQueryParams("text", {
+      status: 400, message: "No text to check given"
+    }),
+  ];
+
+  // Each check is actually a middleware that happens to return false if the
+  // request wasn't valid.
+  for (var i = 0; i < checks.length; i++) {
+    const error = checks[i](req);
+    if (error) {
+      return next(error);
+    }
+  }
+
+  const lang = req.query.slang;
+  const spellchecker = spellcheckers[lang];
+
+  if (!spellchecker) {
+    return next({
+      status: 400, message: "I can't spellcheck `" + lang + "`, sorry."
+    });
+  }
+
+  const inputWords = req.query.text.split(",");
+
+  Promise.all(inputWords.map((word) =>
+    spellchecker.suggestions(word.trim())
+      .then((res) => ({ "word": word, "suggestions": res }))
+  ))
+    .then((allCorrections) => {
+      const corrections = allCorrections
+        .filter((item) => item.suggestions && item.suggestions.length)
+        .map((item) => {
+          // TODO: What is the `ud` param in the response? (It's cargo culted
+          //       from <webspellchecker.net>.)
+          item.ud = false;
+          return item;
+        });
+
+      res.status(200).jsonp(corrections);
+    })
+    .catch(next);
 }

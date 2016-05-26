@@ -1,13 +1,10 @@
 const path = require("path");
 const express = require("express");
-const morgan = require("morgan");
 
 const H = require('./helpers');
 const App = require("./app");
 
 let server = express();
-
-server.use(morgan('combined'));
 
 server.use("/spellcheck/lf/scayt3/ckscayt",
   express.static(path.join(__dirname, "../public"))
@@ -34,6 +31,5 @@ server.use(function notFound(req, res, next) {
 
 server.use(H.errorHandler);
 
-server.listen(3000, () => {
-  console.log("Server started!");
-});
+module.exports = server;
+

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "author": "Pascal Hertleif <killercup@gmail.com> (http://pascalhertleif.de/)",
   "license": "MIT",
@@ -15,5 +15,10 @@
     "hfst-ospell-js": "github:killercup/hfst-ospell-js#6163612",
     "morgan": "^1.7.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "ava": "^0.15.1",
+    "eslint": "^2.10.2",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.1.0"
+  }
 }

@@ -107,7 +107,7 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
   ))
     .then((allCorrections) => {
       const corrections = allCorrections
-        .filter((item) => item.suggestions && item.suggestions.length)
+        .filter((item) => item.suggestions)
         .map((item) => {
           // TODO: What is the `ud` param in the response? (It's cargo culted
           //       from <webspellchecker.net>.)

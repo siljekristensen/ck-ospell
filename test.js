@@ -53,19 +53,23 @@ test("Check Spelling: Correct Word", () =>
     .expect([])
 );
 
-test("Check Spelling: Suggestions", () =>
+test("Check Spelling: Suggestions", (t) =>
   request(app)
     .get(API)
     .query(spellCmd())
     .query({ slang: "sma_NO", text: "akkusativa" })
     .expect(200)
-    .expect([
-      {
-        word: 'akkusativa',
-        suggestions: ['akkusatijvh', 'akkusatijvi', 'akkusativ-D', 'akkusativ-V', 'akkusativ-M', 'akkusativ-L', 'akkusativ-I', 'akkusativ-C'],
-        ud: false,
-      },
-    ])
+    .then((res) => {
+      t.truthy(Array.isArray(res.body));
+      const s = res.body[0];
+
+      t.deepEqual(s.word, 'akkusativa');
+      t.deepEqual(s.ud, false);
+
+      // Only check the values are all present but ignore the order. (For some
+      // reason, the order of suggestions is different on Linux and OS X...)
+      t.deepEqual(s.suggestions.sort(), ['akkusatijvh', 'akkusatijvi', 'akkusativ-D', 'akkusativ-V', 'akkusativ-M', 'akkusativ-L', 'akkusativ-I', 'akkusativ-C'].sort());
+    })
 );
 
 test("Check Spelling: Empty Suggestions", () =>
@@ -81,5 +85,28 @@ test("Check Spelling: Empty Suggestions", () =>
         ud: false,
       },
     ])
+);
+
+test("Check Spelling: Suggestions for multiple words", (t) =>
+  request(app)
+    .get(API)
+    .query(spellCmd())
+    .query({ slang: "sma_NO", text: "lorem,ipsum" })
+    .expect(200)
+    .then((res) => {
+      t.truthy(Array.isArray(res.body));
+
+      // Check lorem
+      const s0 = res.body[0];
+      t.deepEqual(s0.word, 'lorem');
+      t.deepEqual(s0.ud, false);
+      t.deepEqual(s0.suggestions.sort(), ['Florem', 'goerem', 'boerem', 'dyrem', 'gorrem', 'govrem', 'formem', 'bovrem'].sort());
+
+      // Check ipsum
+      const s1 = res.body[1];
+      t.deepEqual(s1.word, 'ipsum');
+      t.deepEqual(s1.ud, false);
+      t.deepEqual(s1.suggestions.sort(), ['Aksum', 'Epsom', 'Husum', 'Virsum', 'jipsem', 'gipsim', 'Sisum', 'Sippum', 'Pesum', 'Hasum'].sort());
+    })
 );
 

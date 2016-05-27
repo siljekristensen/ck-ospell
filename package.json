@@ -12,7 +12,7 @@
   "dependencies": {
     "ckeditor": "^4.5.9",
     "express": "^4.13.4",
-    "hfst-ospell-js": "github:killercup/hfst-ospell-js#6163612",
+    "hfst-ospell-js": "github:killercup/hfst-ospell-js#7aede02d68e82a51da1b02299f9905f67af12942",
     "morgan": "^1.7.0"
   },
   "devDependencies": {

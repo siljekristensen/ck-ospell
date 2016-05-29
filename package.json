@@ -2,10 +2,9 @@
   "name": "ck-ospell",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server/index.js",
-    "test": "eslint 'server/**/*.js' 'test.js' 'index.js' && ava"
+    "test": "eslint 'server/**/*.js' 'test.js' 'server.js' && ava"
   },
   "author": "Pascal Hertleif <killercup@gmail.com> (http://pascalhertleif.de/)",
   "license": "MIT",

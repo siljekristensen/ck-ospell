@@ -1,3 +1,5 @@
+"use strict";
+
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
@@ -19,7 +21,7 @@ server.use(express.static(
   { index: ["index.html"] })
 );
 
-const routes = require("./server");
+const routes = require("./server/index");
 server.use(routes);
 
 server.listen(3000, () => {

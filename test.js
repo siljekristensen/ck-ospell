@@ -3,7 +3,7 @@ const request = require("supertest-as-promised");
 const express = require("express");
 
 const app = express();
-app.use(require("./server"));
+app.use(require("./server/index"));
 
 const API = "/spellcheck/script/ssrv.cgi";
 

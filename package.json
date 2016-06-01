@@ -12,7 +12,9 @@
     "ckeditor": "^4.5.9",
     "express": "^4.13.4",
     "hfst-ospell-js": "github:killercup/hfst-ospell-js#e43ac6e2309da1f607381c593afb2d69701f4a50",
-    "morgan": "^1.7.0"
+    "lodash": "^4.13.1",
+    "morgan": "^1.7.0",
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "ava": "^0.15.1",

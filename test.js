@@ -34,9 +34,12 @@ test("Get Lang List", () =>
     .expect({
       langList: {
         ltr: {
-          'sma_NO': 'South Sámi',
-          'sme_NO': 'Northern Sámi',
-          'smj_NO': 'Lule Sámi',
+          sma_NO: 'South Sámi',
+          sme_NO: 'Northern Sámi',
+          smj_NO: 'Lule Sámi',
+          en_US: 'American English',
+          nn_NO: 'Norwegian Nynorsk',
+          nb_NO: 'Norwegian Bokmål',
         },
         rtl: {},
       },

@@ -16,12 +16,22 @@
     <script src="ckeditor/plugins/giella/lang/de.js"></script>
     <script>
       (function() {
+        // Disable other spell checkers. Not really necessary, though.
+        CKEDITOR.config.removePlugins = 'scayt,wsc';
 
-        CKEDITOR.config.extraPlugins = 'giella,scayt';
-        // CKEDITOR.config.giella_multiLanguageMode = true;
+        // Activate customized SCAYT plugin called 'Giella'. Uses the same
+        // interface (icon, dialogues, etc) as the original SCAYT plugin.
+        CKEDITOR.config.extraPlugins = 'giella';
+        CKEDITOR.config.giella_multiLanguageMode = true;
+
+        // Use local specll check API
         CKEDITOR.config.giella_servicePath = "/spellcheck31/script/ssrv.cgi";
         CKEDITOR.config.giella_srcUrl = "/spellcheck/lf/giella3/ckgiella/ckgiella.js";
+
+        // Set default language
         CKEDITOR.config.language_list = ['en:English'];
+
+        // Engage!
         CKEDITOR.replace('editor1');
       })();
     </script>

@@ -10,13 +10,18 @@
     <textarea id="editor1" cols="30" rows="10"></textarea>
 
     <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/plugins/giella/plugin.js"></script>
+    <script src="ckeditor/plugins/giella/dialogs/options.js"></script>
+    <script src="ckeditor/plugins/giella/lang/en.js"></script>
+    <script src="ckeditor/plugins/giella/lang/de.js"></script>
     <script>
       (function() {
-        CKEDITOR.config.extraPlugins = 'language,scayt';
-        CKEDITOR.config.scayt_multiLanguageMode = true;
-        CKEDITOR.config.scayt_servicePath = "/spellcheck31/script/ssrv.cgi";
-        CKEDITOR.config.scayt_srcUrl = "/spellcheck/lf/scayt3/ckscayt/ckscayt.js";
-        CKEDITOR.config.language_list = ['de:German'];
+
+        CKEDITOR.config.extraPlugins = 'giella,scayt';
+        // CKEDITOR.config.giella_multiLanguageMode = true;
+        CKEDITOR.config.giella_servicePath = "/spellcheck31/script/ssrv.cgi";
+        CKEDITOR.config.giella_srcUrl = "/spellcheck/lf/giella3/ckgiella/ckgiella.js";
+        CKEDITOR.config.language_list = ['en:English'];
         CKEDITOR.replace('editor1');
       })();
     </script>

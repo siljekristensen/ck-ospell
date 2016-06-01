@@ -1,11 +1,11 @@
 .red,
-.scayt-misspell-word {
+.giella-misspell-word {
     background: url(waveline.gif) 52% 100% repeat-x transparent;
     padding-bottom: 0;
     display: inline
 }
 
-.gramm-problem .scayt-misspell-word,
+.gramm-problem .giella-misspell-word,
 .gramm-problem .red {
     background-color: #fff
 }
@@ -20,7 +20,7 @@
     display: inline
 }
 
-.wrapper_scayt {
+.wrapper_giella {
     word-wrap: break-word;
     white-space: -moz-pre-wrap;
     white-space: pre-wrap

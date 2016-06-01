@@ -1,5 +1,5 @@
 /**
- * SCAYT v3.1.8436
+ * Giella v3.1.8436
  * Copyright (c) 1999-2016 SpellChecker.net, Inc. All rights reserved.
  */
 /*!
@@ -28,12 +28,12 @@
  */
 ! function(a, b) {
     a && (a.prototype.Localization.lang[b] = {
-        btn_about: "Über SCAYT",
+        btn_about: "Über Giella",
         btn_addWord: "Wort hinzufügen",
         btn_createDic: "Erzeugen",
         btn_deleteDic: "Löschen",
-        btn_disable: "SCAYT ausschalten",
-        btn_enable: "SCAYT einschalten",
+        btn_disable: "Giella ausschalten",
+        btn_enable: "Giella einschalten",
         btn_ignore: "Ignorieren",
         btn_ignoreAll: "Alle ignorieren",
         btn_langs: "Sprachen",
@@ -41,7 +41,7 @@
         btn_noSuggestions: "No suggestion",
         btn_renameDic: "Umbenennen",
         btn_restoreDic: "Wiederherstellen",
-        btn_toggle: "SCAYT umschalten",
+        btn_toggle: "Giella umschalten",
         btn_options: "Optionen",
         label_allCaps: "Groß geschriebenen Wörter ignorieren",
         label_fieldNameDic: "Wörterbuchname",
@@ -55,7 +55,7 @@
         tab_languages: "Sprachen",
         tab_options: "Optionen",
         text_descriptionDic: "Anfangs wird das Benutzerwörterbuch in einem Cookie gespeichert. Allerdings sind Cookies in der Größe begrenzt. Wenn das Benutzerwörterbuch bis zu einem Punkt wächst, wo es nicht mehr in einem Cookie gespeichert werden kann, wird das Benutzerwörterbuch auf dem Server gespeichert. Um Ihr persönliches Wörterbuch auf dem Server zu speichern, müssen Sie einen Namen für das Wörterbuch angeben. Falls  Sie schon ein gespeicherte Wörterbuch haben, geben Sie bitte dessen Namen ein und klicken Sie auf die Schaltfläche Wiederherstellen.",
-        text_title: "Rechtschreibprüfung während der Texteingabe (SCAYT)",
+        text_title: "Rechtschreibprüfung während der Texteingabe (Giella)",
         text_copyrights: "&copy; <a style='text-decoration: underline;cursor:pointer;color:#00f' href='http://www.webspellchecker.net/' target='_blank'>1999-2016 SpellChecker.net, Inc.</a><br />All Rights Reserved.",
         version: "Version: ",
         message_success_createDic: "Wörterbuch %s wurde erstellt.",
@@ -67,4 +67,4 @@
         message_success_renameDic: "Wörterbuch %s erfolgreich umbenannt.",
         message_error_renameDic: "Wörterbuch %s kann nicht umbenannt werden."
     })
-}(window.SCAYT, "de");
+}(window.GIELLA, "de");

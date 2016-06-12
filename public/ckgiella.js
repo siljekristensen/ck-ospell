@@ -1,5 +1,5 @@
 /**
- * SCAYT v3.1.8436
+ * GIELLA v3.1.8436
  * Copyright (c) 1999-2016 SpellChecker.net, Inc. All rights reserved.
  */
 /*!
@@ -26,7 +26,7 @@
  * Author: Miller Medeiros
  * Version: 0.8.1 - Build: 266 (2012/07/31 03:33 PM)
  */
-var SCAYT = SCAYT || function(a) {
+var GIELLA = GIELLA || function(a) {
     function b(a, b) {
         for (var c in a)
             b.register(c, a[c]),
@@ -36,7 +36,7 @@ var SCAYT = SCAYT || function(a) {
     function c(a, b) {
         var c = function() {
                 try {
-                    e[a].instance = new e[a].creator(a, new SCAYT.Sandbox(a, b))
+                    e[a].instance = new e[a].creator(a, new GIELLA.Sandbox(a, b))
                 } catch (c) {
                     throw new Error("Could not create Module instance with id: " + a + " : " + c.message)
                 }
@@ -58,7 +58,7 @@ var SCAYT = SCAYT || function(a) {
                 return a.allModulesReady = !1,
                     a.allModulesReady;
         return a.allModulesReady = !0,
-            a.getService("Communication").fire("SCAYT", "allModulesReady"),
+            a.getService("Communication").fire("GIELLA", "allModulesReady"),
             a.allModulesReady
     }
     var e = {},
@@ -83,10 +83,10 @@ var SCAYT = SCAYT || function(a) {
             service_host: f("svc.webspellchecker.net", !1),
             service_port: f("80", !1),
             service_path: f("spellcheck31/script/ssrv.cgi", !1),
-            data_attribute_name: f("data-scayt-word", !1),
-            data_lang_attribute: f("data-scayt-lang", !1),
+            data_attribute_name: f("data-giella-word", !1),
+            data_lang_attribute: f("data-giella-lang", !1),
             misspelled_word_node: f("span", !1),
-            misspelled_word_class: f("scayt-misspell-word", !1),
+            misspelled_word_class: f("giella-misspell-word", !1),
             punctuationRegExp: f(/,\^\$\*\+\?\=\!\:\|\\\/\(\)\[\]\{\}\>\<\@\%\&\#\;\_\~ /, !1),
             blockElementsRegex: f(/^(br|img|caption|button|address|blockquote|body|center|dir|div|dl|fieldset|form|h[1-6]|hr|isindex|menu|noframes|noscript|ol|p|pre|table|ul|dd|dt|frameset|li|tbody|td|tfoot|th|thead|tr|html|select|option|sup|sub|input)$/i, !1),
             ignoreElementsRegex: f("style|script", !1),
@@ -94,7 +94,7 @@ var SCAYT = SCAYT || function(a) {
             paused: f(!1, !1),
             graytState: f(!1, !1),
             eventsBlockedState: f({}, !1),
-            scaytLangList: f({}, !1),
+            giellaLangList: f({}, !1),
             graytLangList: f({
                 ltr: {
                     en_GB: "British English",
@@ -106,11 +106,11 @@ var SCAYT = SCAYT || function(a) {
             "ignore-domain-names": f(!0, !0),
             "ignore-words-with-mixed-cases": f(!1, !0),
             "ignore-words-with-numbers": f(!1, !0),
-            userDictionaryKey: f("scayt_user_dictionary", !1),
-            userDictionaryNameKey: f("scayt_user_dictionary_name", !1),
+            userDictionaryKey: f("giella_user_dictionary", !1),
+            userDictionaryNameKey: f("giella_user_dictionary_name", !1),
             userDictionaryName: f(null, !1),
-            scaytLogo: f("css/logo.gif", !1),
-            scaytVersion: f("3.1.8436", !1),
+            giellaLogo: f("css/logo.gif", !1),
+            giellaVersion: f("3.1.8436", !1),
             lang: f("en_US", !0),
             maxSuggestionsDefault: f(5, !1),
             minWordLength: f(4, !1),
@@ -122,7 +122,7 @@ var SCAYT = SCAYT || function(a) {
             localizationPath: f("local/", !1),
             localizationList: f(["af", "ar", "bg", "bn", "bs", "ca", "cs", "cy", "da", "de", "el", "en-us", "en-au", "en-ca", "en-gb", "en", "eo", "es", "et", "eu", "fa", "fi", "fo", "fr-ca", "fr", "gl", "gu", "he", "hi", "hr", "hu", "is", "it", "ja", "ka", "km", "ko", "lt", "lv", "mk", "mn", "ms", "nb", "nl", "no", "pl", "pt-br", "pt", "ro", "ru", "sk", "sl", "sr-latn", "sr", "sv", "th", "tr", "ug", "uk", "ku", "vi", "zh-cn", "zh"], !1),
             localization: f("en", !1),
-            cssPath: f("css/scayt.css", !1),
+            cssPath: f("css/giella.css", !1),
             uid: f(void 0, !1),
             detectLocalizationLanguage: f(!1, !1),
             supportLocale: f(!0, !1),
@@ -260,7 +260,7 @@ var SCAYT = SCAYT || function(a) {
     delete a.words_separator,
         delete a.paused,
         delete a.eventsBlockedState,
-        delete a.scaytLangList,
+        delete a.giellaLangList,
         delete a.graytLangList,
         delete a.showBanner,
         delete a.uid,
@@ -321,9 +321,9 @@ var SCAYT = SCAYT || function(a) {
         this.UILib.on("mousedown", p, t),
         this.UILib.on("mouseup", p, u);
     var v = {
-        Communication: SCAYT.Communication,
-        RangeCreator: SCAYT.RangeCreator,
-        Deferred: SCAYT.Deferred
+        Communication: GIELLA.Communication,
+        RangeCreator: GIELLA.RangeCreator,
+        Deferred: GIELLA.Deferred
     };
     this.allModulesReady = !1,
         this.register = function(a, b) {
@@ -337,7 +337,7 @@ var SCAYT = SCAYT || function(a) {
             return e[a] ? e[a].instance : void 0
         },
         this.start = function(a) {
-            c(a, this) ? this.getService("Communication").fire("SCAYT", "moduleStarted", a) : this.getService("Communication").fire("SCAYT", "moduleStarted", a + " already started.")
+            c(a, this) ? this.getService("Communication").fire("GIELLA", "moduleStarted", a) : this.getService("Communication").fire("GIELLA", "moduleStarted", a + " already started.")
         },
         this.initModules = function(a) {
             b(a, this),
@@ -350,12 +350,12 @@ var SCAYT = SCAYT || function(a) {
                 this.UILib.off("mouseup", p, u)
         },
         b(v, this),
-        this.getService("Communication").subscribe("SCAYT", "moduleReady", function(a) {
+        this.getService("Communication").subscribe("GIELLA", "moduleReady", function(a) {
             e[a.moduleID].ready = !0,
                 d(this)
         }, this)
 };
-SCAYT.Sandbox = function(a, b) {
+GIELLA.Sandbox = function(a, b) {
         function c() {
             var a, b = this.getOption("leftMouseButtonPressed"),
                 c = this.Utils.browser.ie;
@@ -572,7 +572,7 @@ SCAYT.Sandbox = function(a, b) {
                         ;
                         a = b
                     }
-                    return SCAYT.jquip(a)
+                    return GIELLA.jquip(a)
                 }
                 this.find = function(c, d) {
                         var e;
@@ -599,79 +599,79 @@ SCAYT.Sandbox = function(a, b) {
                         return a(e)
                     },
                     this.create = function(b) {
-                        return a(SCAYT.jquip(b))
+                        return a(GIELLA.jquip(b))
                     },
                     this.remove = function(b) {
-                        return a(SCAYT.jquip(b).remove())
+                        return a(GIELLA.jquip(b).remove())
                     },
                     this.appendTo = function(b, c) {
-                        return a(SCAYT.jquip(b).appendTo(SCAYT.jquip(c)))
+                        return a(GIELLA.jquip(b).appendTo(GIELLA.jquip(c)))
                     },
                     this.prependTo = function(b, c) {
-                        return a(SCAYT.jquip(b).prependTo(SCAYT.jquip(c)))
+                        return a(GIELLA.jquip(b).prependTo(GIELLA.jquip(c)))
                     },
                     this.append = function(b, c) {
-                        return a(SCAYT.jquip(b).append(SCAYT.jquip(c)))
+                        return a(GIELLA.jquip(b).append(GIELLA.jquip(c)))
                     },
                     this.prepend = function(b, c) {
-                        return a(SCAYT.jquip(b).prepend(SCAYT.jquip(c)))
+                        return a(GIELLA.jquip(b).prepend(GIELLA.jquip(c)))
                     },
                     this.insertAfter = function(b, c) {
-                        return a(SCAYT.jquip(b).insertAfter(SCAYT.jquip(c)))
+                        return a(GIELLA.jquip(b).insertAfter(GIELLA.jquip(c)))
                     },
                     this.insertBefore = function(b, c) {
-                        return a(SCAYT.jquip(b).insertBefore(SCAYT.jquip(c)))
+                        return a(GIELLA.jquip(b).insertBefore(GIELLA.jquip(c)))
                     },
                     this.attr = function(b, c, d) {
-                        return a(SCAYT.jquip(b).attr(c, d))
+                        return a(GIELLA.jquip(b).attr(c, d))
                     },
                     this.removeAttr = function(b, c) {
-                        return a(SCAYT.jquip(b).removeAttr(c))
+                        return a(GIELLA.jquip(b).removeAttr(c))
                     },
                     this.addClass = function(b, c) {
-                        return a(SCAYT.jquip(b).addClass(c))
+                        return a(GIELLA.jquip(b).addClass(c))
                     },
                     this.removeClass = function(b, c) {
-                        return a(SCAYT.jquip(b).removeClass(c))
+                        return a(GIELLA.jquip(b).removeClass(c))
                     },
                     this.hasClass = function(b, c) {
-                        return a(SCAYT.jquip(b).hasClass(c))
+                        return a(GIELLA.jquip(b).hasClass(c))
                     },
                     this.css = function(b, c) {
-                        return a(SCAYT.jquip(b).css(c))
+                        return a(GIELLA.jquip(b).css(c))
                     },
                     this.show = function(b) {
-                        return a(SCAYT.jquip(b).show())
+                        return a(GIELLA.jquip(b).show())
                     },
                     this.hide = function(b) {
-                        return a(SCAYT.jquip(b).hide())
+                        return a(GIELLA.jquip(b).hide())
                     },
                     this.html = function(b, c) {
-                        return a(SCAYT.jquip(b).html(c))
+                        return a(GIELLA.jquip(b).html(c))
                     },
                     this.val = function(b, c) {
-                        return a(SCAYT.jquip(b).val(c))
+                        return a(GIELLA.jquip(b).val(c))
                     },
                     this.text = function(b, c) {
-                        return a(SCAYT.jquip(b).text(c))
+                        return a(GIELLA.jquip(b).text(c))
                     },
                     this.empty = function(b) {
-                        return a(SCAYT.jquip(b).empty())
+                        return a(GIELLA.jquip(b).empty())
                     },
                     this.domReady = function(a) {
-                        SCAYT.jquip(a)
+                        GIELLA.jquip(a)
                     },
                     this.on = function(a, b, c, d) {
-                        SCAYT.jquip(b).on(a, c, d)
+                        GIELLA.jquip(b).on(a, c, d)
                     },
                     this.off = function(a, b, c, d) {
-                        SCAYT.jquip(b).off(a, c, d)
+                        GIELLA.jquip(b).off(a, c, d)
                     },
                     this.one = function(a, b, c) {
-                        SCAYT.jquip(b).one(a, c)
+                        GIELLA.jquip(b).one(a, c)
                     },
                     this.trigger = function(a, b) {
-                        SCAYT.jquip(b).trigger(a)
+                        GIELLA.jquip(b).trigger(a)
                     },
                     this.getEventTarget = function(a) {
                         return a.target || (a.target = a.srcElement || document),
@@ -679,55 +679,55 @@ SCAYT.Sandbox = function(a, b) {
                             a.target
                     },
                     this.cancelEvent = function(a) {
-                        return SCAYT.jquip.cancelEvent(a)
+                        return GIELLA.jquip.cancelEvent(a)
                     },
                     this.preventDefault = function(a) {
-                        SCAYT.jquip.preventDefault(a)
+                        GIELLA.jquip.preventDefault(a)
                     },
                     this.focus = function() {
                         var b, c = [];
                         return Array.prototype.push.apply(c, arguments),
-                            b = SCAYT.jquip(c.shift()),
+                            b = GIELLA.jquip(c.shift()),
                             a(b.focus.apply(b, c))
                     },
                     this.blur = function() {
                         var b, c = [];
                         return Array.prototype.push.apply(c, arguments),
-                            b = SCAYT.jquip(c.shift()),
+                            b = GIELLA.jquip(c.shift()),
                             a(b.blur.apply(b, c))
                     },
                     this.contextmenu = function() {
                         var b, c = [];
                         return Array.prototype.push.apply(c, arguments),
-                            b = SCAYT.jquip(c.shift()),
+                            b = GIELLA.jquip(c.shift()),
                             a(b.contextmenu.apply(b, c))
                     },
                     this.proxy = function(a, b) {
-                        return SCAYT.jquip.proxy(a, b)
+                        return GIELLA.jquip.proxy(a, b)
                     },
                     this.width = function(a, b) {
-                        return SCAYT.jquip(a).width(b)
+                        return GIELLA.jquip(a).width(b)
                     },
                     this.height = function(a, b) {
-                        return SCAYT.jquip(a).height(b)
+                        return GIELLA.jquip(a).height(b)
                     },
                     this.outerWidth = function(a, b) {
-                        return SCAYT.jquip(a).outerWidth(b)
+                        return GIELLA.jquip(a).outerWidth(b)
                     },
                     this.outerHeight = function(a, b) {
-                        return SCAYT.jquip(a).outerHeight(b)
+                        return GIELLA.jquip(a).outerHeight(b)
                     },
                     this.scrollLeft = function(a, b) {
-                        return SCAYT.jquip(a).scrollLeft(b)
+                        return GIELLA.jquip(a).scrollLeft(b)
                     },
                     this.scrollTop = function(a, b) {
-                        return SCAYT.jquip(a).scrollTop(b)
+                        return GIELLA.jquip(a).scrollTop(b)
                     },
                     this.offset = function(a) {
-                        return SCAYT.jquip(a).offset()
+                        return GIELLA.jquip(a).offset()
                     },
                     this.extend = function() {
-                        return SCAYT.jquip.extend.apply(SCAYT.jquip, arguments)
+                        return GIELLA.jquip.extend.apply(GIELLA.jquip, arguments)
                     }
             },
             b = new c;
@@ -878,7 +878,7 @@ SCAYT.Sandbox = function(a, b) {
             }
         };
         a.UILib = d
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = [],
@@ -895,11 +895,11 @@ SCAYT.Sandbox = function(a, b) {
                         b[d].fire(a, c)
                 },
                 getUniqueId: function(a) {
-                    return a.id ? a.id : "scayt_" + b.length
+                    return a.id ? a.id : "giella_" + b.length
                 }
             };
         a.instanceManager = c
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = a.UILib,
@@ -918,7 +918,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             };
         a.DOM = c
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = {
@@ -953,7 +953,7 @@ SCAYT.Sandbox = function(a, b) {
             }
         };
         a.Localization = b
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = a.UILib,
@@ -986,12 +986,12 @@ SCAYT.Sandbox = function(a, b) {
                     a = a || {};
                     var c, d = this,
                         e = function() {
-                            SCAYT.prototype.IO[a.callbackName] = function(a) {
+                            GIELLA.prototype.IO[a.callbackName] = function(a) {
                                 c = a
                             }
                         },
                         f = function() {
-                            delete SCAYT.prototype.IO[a.callbackName]
+                            delete GIELLA.prototype.IO[a.callbackName]
                         },
                         g = function() {
                             f(),
@@ -1030,7 +1030,7 @@ SCAYT.Sandbox = function(a, b) {
                 },
                 get: function(a, b, f) {
                     var g, h = "callback" + Math.random().toString(20).substr(2, 9),
-                        i = "SCAYT.prototype.IO.";
+                        i = "GIELLA.prototype.IO.";
                     if (c) {
                         for (var j = 0; j < d.length; j++)
                             d[j].success && b(d[j].success),
@@ -1067,7 +1067,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             };
         a.IO = e
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = {
@@ -1279,7 +1279,7 @@ SCAYT.Sandbox = function(a, b) {
             }
         };
         a.Utils = b
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = {},
@@ -1305,7 +1305,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             };
         a.Template = e
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = {
@@ -1440,7 +1440,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             };
         a.DataStorage = f
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -1471,7 +1471,7 @@ SCAYT.Sandbox = function(a, b) {
                                 var e, f, g, h = b.join(""),
                                     i = 0,
                                     j = [];
-                                for (h = SCAYT.prototype.Utils.removePunctuation(h, a); g = c.wordRegex.exec(h);)
+                                for (h = GIELLA.prototype.Utils.removePunctuation(h, a); g = c.wordRegex.exec(h);)
                                     e = g.index,
                                     f = e + g[0].length,
                                     e > i && d(i, e, !1),
@@ -1648,8 +1648,8 @@ SCAYT.Sandbox = function(a, b) {
             },
             b.SelectionManager.prototype = {},
             b.RangyAdapter = function(a, c, d, e) {
-                var f = SCAYT.prototype.UILib;
-                b.Lib = b.Lib || SCAYT.rangy || window.rangy,
+                var f = GIELLA.prototype.UILib;
+                b.Lib = b.Lib || GIELLA.rangy || window.rangy,
                     b.Lib.initialized === !1 && b.Lib.init();
                 var g, h = null,
                     i = {
@@ -1860,7 +1860,7 @@ SCAYT.Sandbox = function(a, b) {
             },
             b.TestAdapter = function() {
                 return b.Lib = b.Lib || window.TestLib,
-                    SCAYT.Utils.removeGlobal(window.TestLib), {
+                    GIELLA.Utils.removeGlobal(window.TestLib), {
                         createRange: function() {
                             return b.Lib.createRange()
                         },
@@ -1879,14 +1879,14 @@ SCAYT.Sandbox = function(a, b) {
                     }
             },
             a.RangeCreator = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, c) {
             this.name = a,
                 this.sandbox = c,
                 this.events = {},
-                b.Signal = b.Signal || SCAYT.signals.Signal
+                b.Signal = b.Signal || GIELLA.signals.Signal
         };
         b.prototype = {
                 init: function() {
@@ -1920,7 +1920,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.Communication = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -2003,7 +2003,7 @@ SCAYT.Sandbox = function(a, b) {
                     }
             },
             a.Deferred = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = window.console || {},
@@ -2019,7 +2019,7 @@ SCAYT.Sandbox = function(a, b) {
             h = {
                 isON: function(a) {
                     a = a || !1,
-                        g = a ? !0 : /scaytDebug\b/.test(location.hash)
+                        g = a ? !0 : /giellaDebug\b/.test(location.hash)
                 },
                 isIE: e.ie,
                 log: function(a) {
@@ -2032,7 +2032,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             };
         a.logger = h
-    }(SCAYT.prototype),
+    }(GIELLA.prototype),
     function(a) {
         function b(a, b, c, d, e) {
             this._listener = b,
@@ -2178,7 +2178,7 @@ SCAYT.Sandbox = function(a, b) {
         var e = d;
         e.Signal = d,
             a.signals = e
-    }(SCAYT || this),
+    }(GIELLA || this),
     function() {
         ! function(a) {
             function b(a, b) {
@@ -4513,7 +4513,7 @@ SCAYT.Sandbox = function(a, b) {
             G && ("complete" == document.readyState ? O() : (b(document, "addEventListener") && document.addEventListener("DOMContentLoaded", O, !1),
                     K(window, "load", O))),
                 a.rangy = I
-        }(SCAYT || this),
+        }(GIELLA || this),
         function(a) {
             return a.createModule("SaveRestore", ["WrappedSelection"], function(a, b) {
                     function c(a, b) {
@@ -4662,7 +4662,7 @@ SCAYT.Sandbox = function(a, b) {
                     })
                 }),
                 a
-        }(SCAYT.rangy || this.rangy),
+        }(GIELLA.rangy || this.rangy),
         function(a) {
             return a.createModule("TextRange", ["WrappedSelection"], function(a, b) {
                     function c(a, b) {
@@ -5729,7 +5729,7 @@ SCAYT.Sandbox = function(a, b) {
                         }
                 }),
                 a
-        }(SCAYT.rangy || this.rangy)
+        }(GIELLA.rangy || this.rangy)
     }(),
     function(a, b) {
         var c = a.jquip,
@@ -7343,7 +7343,7 @@ SCAYT.Sandbox = function(a, b) {
             },
             a.$ = a.jquip = e
     }(window),
-    SCAYT.jquip = jquip.noConflict(!0),
+    GIELLA.jquip = jquip.noConflict(!0),
     function(a) {
         "use strict";
         var b = function(a, c) {
@@ -7410,8 +7410,8 @@ SCAYT.Sandbox = function(a, b) {
                         path: a.sandbox.getOption("service_path")
                     }).addParameter("cmd", "get_lang_list").addParameter("run_mode", "web_service").addParameter("customerid", a.sandbox.getOption("customer_id")).addParameter("slang", a.sandbox.getOption("lang")), function(b) {
                         var c, d, e;
-                        a.sandbox.setOption("scaytLangList", b.langList),
-                            c = a.sandbox.getOption("scaytLangList"),
+                        a.sandbox.setOption("giellaLangList", b.langList),
+                            c = a.sandbox.getOption("giellaLangList"),
                             d = a.sandbox.getOption("graytLangList"),
                             e = a.sandbox.getOption("lang"),
                             e in c.ltr || e in c.rtl || a.sandbox.setOption("lang", a.sandbox.getDefaultOption("lang")),
@@ -7550,7 +7550,7 @@ SCAYT.Sandbox = function(a, b) {
                     }
                     var e = this,
                         f = "word_",
-                        g = this.sandbox.getOption("scaytLangList");
+                        g = this.sandbox.getOption("giellaLangList");
                     if (a && !(a.length < 1)) {
                         if (!(c in g.ltr || c in g.rtl))
                             return console.warn('Specified "' + c + '" language is not supported for your Customer ID. More details at http://wiki.webspellchecker.net or contact support@webspellchecker.net'),
@@ -7899,7 +7899,7 @@ SCAYT.Sandbox = function(a, b) {
                     }
             },
             a.DictionaryManager = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -7964,7 +7964,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.EventProxy = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8072,7 +8072,7 @@ SCAYT.Sandbox = function(a, b) {
                             d = e.endContainer(),
                             f = e.startOffset(),
                             g = e.endOffset(),
-                            q = this.getNeighbourScaytNodes(c, d, f, g),
+                            q = this.getNeighbourGiellaNodes(c, d, f, g),
                             m && (q = q.concat(e.getNodes()))),
                         q = b(q),
                         q = i.arrayUnique(q),
@@ -8081,7 +8081,7 @@ SCAYT.Sandbox = function(a, b) {
                     for (var r = 0, s = q.length; s > r; r += 1)
                         h.removeMarkup(q[r])
                 },
-                getNeighbourScaytNodes: function(a, b, c, d) {
+                getNeighbourGiellaNodes: function(a, b, c, d) {
                     function e(a, b, c) {
                         var d, e, g, h = i.sandbox.getOption("container"),
                             k = /[^\t-\r \u0085\u00A0\u1680\u180E\u2000-\u200B\u2028\u2029\u202F\u205F\u3000]+/g,
@@ -8156,7 +8156,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.Markup = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8255,18 +8255,18 @@ SCAYT.Sandbox = function(a, b) {
                         h
                 },
                 collectWordsInRange: function(a) {
-                    var b = this.createStringWithoutScaytElements(a.commonAncestorContainer());
+                    var b = this.createStringWithoutGiellaElements(a.commonAncestorContainer());
                     return this.collectWordsInString(b)
                 },
                 collectWordsInContainer: function(a, b) {
-                    var c, d = new SCAYT.WordsFinder.Finder(this.sandbox, b);
+                    var c, d = new GIELLA.WordsFinder.Finder(this.sandbox, b);
                     return d.collectBlockInfo(a),
                         d.resultText = d.resultText.replace(/_/g, " "),
                         c = this.collectWordsInString(d.resultText),
                         c.detectedLanguages = d.detectedLanguages,
                         c
                 },
-                createStringWithoutScaytElements: function(a) {
+                createStringWithoutGiellaElements: function(a) {
                     for (var b = this.sandbox.UILib, c = "", d = [a], e = d.shift(), f = this.sandbox.getOption("blockElementsRegex"), g = this.sandbox.getOption("misspelled_word_node"), h = this.sandbox.getOption("data_attribute_name"), i = this.sandbox.getOption("ignoreElementsRegex"), j = this.sandbox.getOption("punctuationRegExp"), k = new RegExp("(^|\\s)rangySelectionBoundary(\\s|$)"); e;) {
                         switch (e.nodeType) {
                             case 3:
@@ -8287,7 +8287,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.WordsCollector = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8453,7 +8453,7 @@ SCAYT.Sandbox = function(a, b) {
                     }
             },
             a.WordsFinder = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8474,13 +8474,13 @@ SCAYT.Sandbox = function(a, b) {
                 },
                 replaceWordInSelection: function(a) {
                     var b, c;
-                    for (c = this.getScaytNodesFromSelection(); c.length > 0;)
+                    for (c = this.getGiellaNodesFromSelection(); c.length > 0;)
                         b = c.shift(),
                         this.replaceWordByNode(b, a)
                 },
                 ignoreWordInSelection: function() {
                     var a;
-                    a = this.getScaytNodesFromSelection(),
+                    a = this.getGiellaNodesFromSelection(),
                         this.ignoreWords(a)
                 },
                 ignoreWordInDocument: function() {
@@ -8490,7 +8490,7 @@ SCAYT.Sandbox = function(a, b) {
                         h = this.sandbox.getOption("data_lang_attribute"),
                         i = this.sandbox.UILib,
                         j = [];
-                    for (b = this.getScaytNodesFromSelection(); b.length > 0;)
+                    for (b = this.getGiellaNodesFromSelection(); b.length > 0;)
                         a = b.shift(),
                         d = a.getAttribute(h),
                         c = this.sandbox.DOM.query(e, f + "[" + g + '="' + a.getAttribute(g) + '"]'),
@@ -8498,7 +8498,7 @@ SCAYT.Sandbox = function(a, b) {
                         j.push.apply(j, c);
                     this.ignoreWords(j)
                 },
-                getScaytNodesFromSelection: function() {
+                getGiellaNodesFromSelection: function() {
                     var a = this.sandbox.getSelection(),
                         b = a.anchorNode(),
                         c = this.sandbox.getOption("misspelled_word_node"),
@@ -8538,7 +8538,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.WordsProcessor = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8548,12 +8548,12 @@ SCAYT.Sandbox = function(a, b) {
                 this.closeBannerTimeout = void 0,
                 this.contextMenuContainer = null,
                 this.bannerShown = 0,
-                this.template = '<div id="scayt_banner" style="padding: 12px 26px 10px 10px; border: 1px solid #c7c7c7; box-shadow: 0 0 5px rgba(0,0,0,.1); position: absolute; font-size: 12px; line-height: 1.33; font-family: Arial,Verdana,sans-serif; z-index: 9998; width: 152px; min-height: 60px; background-color: rgb(255, 255, 255); white-space: normal; left: 102%; top: 0; background-position: initial initial; background-repeat: initial initial; color: #3f3f3f;"><div style="overflow: hidden;"><a id="closeBanner" href="#" style="cursor:pointer; position: absolute; top: 12px; right: 10px; width: 10px; height: 10px; background: url(' + c + ') no-repeat 100% 50%;"></a><a id="scayt__btn-more" style="font-size: 14px; cursor:pointer; text-decoration: underline; display: inline-block; margin-bottom: 10px; color: #1354a5;" href="http://www.webspellchecker.net/fcklicensed" target="_blank">Click to know more...</a></div>' + 'Spell checking provided by WebSpellChecker.net. <a id="scayt__btn-hosted" style="cursor:pointer; color: #1456a3; text-decoration:underline; display: inline; font-size: 12px;" target="_blank" href="http://www.webspellchecker.net/fckhosted"> Hosted </a> and <a id="scayt__btn-licensed" style="cursor:pointer; color: #1456a3; text-decoration:underline; display: inline; font-size: 12px;" target="_blank" href="http://www.webspellchecker.net/fcklicensed"> Licensed </a> spell-checking solutions.</div>'
+                this.template = '<div id="giella_banner" style="padding: 12px 26px 10px 10px; border: 1px solid #c7c7c7; box-shadow: 0 0 5px rgba(0,0,0,.1); position: absolute; font-size: 12px; line-height: 1.33; font-family: Arial,Verdana,sans-serif; z-index: 9998; width: 152px; min-height: 60px; background-color: rgb(255, 255, 255); white-space: normal; left: 102%; top: 0; background-position: initial initial; background-repeat: initial initial; color: #3f3f3f;"><div style="overflow: hidden;"><a id="closeBanner" href="#" style="cursor:pointer; position: absolute; top: 12px; right: 10px; width: 10px; height: 10px; background: url(' + c + ') no-repeat 100% 50%;"></a><a id="giella__btn-more" style="font-size: 14px; cursor:pointer; text-decoration: underline; display: inline-block; margin-bottom: 10px; color: #1354a5;" href="http://www.webspellchecker.net/fcklicensed" target="_blank">Click to know more...</a></div>' + 'Spell checking provided by WebSpellChecker.net. <a id="giella__btn-hosted" style="cursor:pointer; color: #1456a3; text-decoration:underline; display: inline; font-size: 12px;" target="_blank" href="http://www.webspellchecker.net/fckhosted"> Hosted </a> and <a id="giella__btn-licensed" style="cursor:pointer; color: #1456a3; text-decoration:underline; display: inline; font-size: 12px;" target="_blank" href="http://www.webspellchecker.net/fcklicensed"> Licensed </a> spell-checking solutions.</div>'
         };
         b.prototype = {
                 init: function() {
                     var a = this.sandbox;
-                    this.sandbox.Template.create("scayt_banner_tpl", this.template),
+                    this.sandbox.Template.create("giella_banner_tpl", this.template),
                         this.sandbox.subscribe("showBanner", function(a) {
                             this.showBannerHandler(a.contextMenuContainerSelector)
                         }, this),
@@ -8600,15 +8600,15 @@ SCAYT.Sandbox = function(a, b) {
                 showBanner: function(a) {
                     var b = this,
                         c = this.sandbox.UILib,
-                        d = b.sandbox.Template.render("scayt_banner_tpl", {}),
+                        d = b.sandbox.Template.render("giella_banner_tpl", {}),
                         e = c.proxy(b.actionLinks, b);
                     c.append(a, d),
-                        c.off("mousedown", "#scayt_banner", e),
-                        c.one("mousedown", "#scayt_banner", e)
+                        c.off("mousedown", "#giella_banner", e),
+                        c.one("mousedown", "#giella_banner", e)
                 },
                 hideBanner: function() {
                     var a = this.sandbox.UILib,
-                        b = a.find("#scayt_banner")[0];
+                        b = a.find("#giella_banner")[0];
                     b && (a.css(a.parent(b), {
                             overflow: ""
                         }),
@@ -8616,7 +8616,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.Banner = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8670,7 +8670,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.IME = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8772,7 +8772,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             }(),
             a.GrammarDictionaryManager = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -8982,7 +8982,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.GrammarMarkup = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -9127,7 +9127,7 @@ SCAYT.Sandbox = function(a, b) {
                     }
             },
             a.GrammarPhrasesFinder = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -9340,7 +9340,7 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.SentencesCollector = b
-    }(SCAYT),
+    }(GIELLA),
     function(a) {
         "use strict";
         var b = function(a, b) {
@@ -9422,8 +9422,8 @@ SCAYT.Sandbox = function(a, b) {
                 }
             },
             a.SentencesProcessor = b
-    }(SCAYT),
-    SCAYT.CKSCAYT = function(a, b) {
+    }(GIELLA),
+    GIELLA.CKGIELLA = function(a, b) {
         function c(a) {
             for (var b, c = n.getOption("charsToObserve"), d = a.node, e = 0; e < c.length; e += 1)
                 b = n.Utils.findFirstNodeWithString(d, c[e].charCode),
@@ -9466,7 +9466,7 @@ SCAYT.Sandbox = function(a, b) {
                 return f = c.css(e, "background-color"),
                     f || (f = c.css(d, "background-color")),
                     f && (f = f.replace(/ /g, "").toLowerCase(),
-                        f.indexOf("rgba(0,0,0,0)") < 0 && f.indexOf("transparent") < 0 && (b[".gramm-problem > .scayt-misspell-word"] = "background-color: " + f + ";",
+                        f.indexOf("rgba(0,0,0,0)") < 0 && f.indexOf("transparent") < 0 && (b[".gramm-problem > .giella-misspell-word"] = "background-color: " + f + ";",
                             b[".gramm-problem > .red"] = "background-color: " + f + ";")),
                     b
             }
@@ -9531,27 +9531,27 @@ SCAYT.Sandbox = function(a, b) {
         delete a.graytAutoStartup;
         var l = a.multiLanguageStyles;
         delete a.multiLanguageStyles;
-        var m = new SCAYT(a),
-            n = new SCAYT.Sandbox("CKSCAYTApp", m);
+        var m = new GIELLA(a),
+            n = new GIELLA.Sandbox("CKGIELLAApp", m);
         g(n, l),
-            SCAYT.CustomHandlers = SCAYT.CustomHandlers || {};
-        for (var o in SCAYT.CustomHandlers)
-            SCAYT.CustomHandlers.hasOwnProperty(o) && n.subscribe(o, SCAYT.CustomHandlers[o]);
+            GIELLA.CustomHandlers = GIELLA.CustomHandlers || {};
+        for (var o in GIELLA.CustomHandlers)
+            GIELLA.CustomHandlers.hasOwnProperty(o) && n.subscribe(o, GIELLA.CustomHandlers[o]);
         m.instanceManager.add(n);
         var p = {
-            IME: SCAYT.IME,
-            EventProxy: SCAYT.EventProxy,
-            Banner: SCAYT.Banner,
-            WordsCollector: SCAYT.WordsCollector,
-            WordsFinder: SCAYT.WordsFinder,
-            Dictionary: SCAYT.DictionaryManager,
-            Markup: SCAYT.Markup,
-            WordsProcessor: SCAYT.WordsProcessor,
-            SentencesCollector: SCAYT.SentencesCollector,
-            SentencesDictionary: SCAYT.GrammarDictionaryManager,
-            GrammarPhrasesFinder: SCAYT.GrammarPhrasesFinder,
-            SentencesProcessor: SCAYT.SentencesProcessor,
-            GrammarMarkup: SCAYT.GrammarMarkup
+            IME: GIELLA.IME,
+            EventProxy: GIELLA.EventProxy,
+            Banner: GIELLA.Banner,
+            WordsCollector: GIELLA.WordsCollector,
+            WordsFinder: GIELLA.WordsFinder,
+            Dictionary: GIELLA.DictionaryManager,
+            Markup: GIELLA.Markup,
+            WordsProcessor: GIELLA.WordsProcessor,
+            SentencesCollector: GIELLA.SentencesCollector,
+            SentencesDictionary: GIELLA.GrammarDictionaryManager,
+            GrammarPhrasesFinder: GIELLA.GrammarPhrasesFinder,
+            SentencesProcessor: GIELLA.SentencesProcessor,
+            GrammarMarkup: GIELLA.GrammarMarkup
         };
         n.subscribe("allModulesReady", d),
             n.subscribe("allModulesReady", e),
@@ -9580,10 +9580,10 @@ SCAYT.Sandbox = function(a, b) {
                     a.changedOptions.lang && a.changedOptions.lang !== n.getOption("lang") && (n.fire("removeMarkupInDocument", {}),
                             n.removeAllDeferredFunctions()),
                         n.setPaused(!0);
-                    var b = SCAYT.DictionaryManager.Dictionary,
+                    var b = GIELLA.DictionaryManager.Dictionary,
                         c = n.getOption("lang");
                     b.each(c, function(a) {
-                        a.getStatus(n.getOption("uid")) == SCAYT.DictionaryManager.wordStatus.inprocess && a.setStatus(SCAYT.DictionaryManager.wordStatus.unknown, n.getOption("uid"))
+                        a.getStatus(n.getOption("uid")) == GIELLA.DictionaryManager.wordStatus.inprocess && a.setStatus(GIELLA.DictionaryManager.wordStatus.unknown, n.getOption("uid"))
                     });
                     for (var d in a.changedOptions)
                         a.changedOptions.hasOwnProperty(d) && n.setOption(d, a.changedOptions[d]);
@@ -9655,10 +9655,10 @@ SCAYT.Sandbox = function(a, b) {
                         f())
                 },
                 getLangList: function() {
-                    return this.getScaytLangList()
+                    return this.getGiellaLangList()
                 },
-                getScaytLangList: function() {
-                    return n.getOption("scaytLangList")
+                getGiellaLangList: function() {
+                    return n.getOption("giellaLangList")
                 },
                 getGraytLangList: function() {
                     return n.getOption("graytLangList")
@@ -9715,12 +9715,12 @@ SCAYT.Sandbox = function(a, b) {
                     return n.removeMarkupFromString(a)
                 },
                 getLogo: function() {
-                    return n.getOption("basePath") + n.getOption("scaytLogo")
+                    return n.getOption("basePath") + n.getOption("giellaLogo")
                 },
                 getVersion: function() {
-                    return n.getOption("scaytVersion")
+                    return n.getOption("giellaVersion")
                 },
-                isScaytNode: function(a) {
+                isGiellaNode: function(a) {
                     var b = n.getOption("data_attribute_name");
                     return n.Utils.isEqualNode(a, b)
                 },
@@ -9728,9 +9728,9 @@ SCAYT.Sandbox = function(a, b) {
                     var b = n.getOption("problem_grammar_data_attribute");
                     return n.Utils.isEqualNode(a, b)
                 },
-                findScaytNode: function(a) {
+                findGiellaNode: function(a) {
                     for (var b = 0; b < a.length; b++)
-                        if (this.isScaytNode(a[b]))
+                        if (this.isGiellaNode(a[b]))
                             return a[b];
                     return null
                 },
@@ -9752,9 +9752,9 @@ SCAYT.Sandbox = function(a, b) {
                     n.setOption("customDictionary", a)
                 },
                 getNodeAttribute: function() {
-                    return this.getScaytNodeAttributeName()
+                    return this.getGiellaNodeAttributeName()
                 },
-                getScaytNodeAttributeName: function() {
+                getGiellaNodeAttributeName: function() {
                     return n.getOption("data_attribute_name")
                 },
                 getGraytNodeAttributeName: function() {
@@ -9764,7 +9764,7 @@ SCAYT.Sandbox = function(a, b) {
                     return n.getOption("data_lang_attribute")
                 },
                 getProblemDescriptionText: function(a, b) {
-                    var c, d, e = SCAYT.GrammarDictionaryManager.Dictionary;
+                    var c, d, e = GIELLA.GrammarDictionaryManager.Dictionary;
                     return c = e.getPhrase(a, b).problemId,
                         d = e.getProblemDescription(c)
                 },
@@ -9787,11 +9787,11 @@ SCAYT.Sandbox = function(a, b) {
                 }
             }
     },
-    SCAYT.CKSCAYT.prototype.basePath = function() {
-        var a = window.SCAYT_BASEPATH || "";
+    GIELLA.CKGIELLA.prototype.basePath = function() {
+        var a = window.GIELLA_BASEPATH || "";
         if (!a)
             for (var b = document.getElementsByTagName("script"), c = 0; c < b.length; c++) {
-                var d = b[c].src.match(/(^|.*[\\\/])ckscayt.js(?:\?.*)?$/i);
+                var d = b[c].src.match(/(^|.*[\\\/])ckgiella.js(?:\?.*)?$/i);
                 if (d) {
                     a = d[1];
                     break

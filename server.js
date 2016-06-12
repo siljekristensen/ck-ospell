@@ -8,7 +8,7 @@ const server = express();
 
 server.use(morgan('combined'));
 
-server.use("/spellcheck/lf/scayt3/ckscayt",
+server.use("/spellcheck/lf/giella3/ckgiella",
   express.static(path.join(__dirname, "public"))
 );
 

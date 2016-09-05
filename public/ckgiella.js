@@ -109,7 +109,7 @@ var GIELLA = GIELLA || function(a) {
             userDictionaryKey: f("giella_user_dictionary", !1),
             userDictionaryNameKey: f("giella_user_dictionary_name", !1),
             userDictionaryName: f(null, !1),
-            giellaLogo: f("css/logo.gif", !1),
+            giellaLogo: f("css/divvun-logo.png", !1),
             giellaVersion: f("3.1.8436", !1),
             lang: f("en_US", !0),
             maxSuggestionsDefault: f(5, !1),

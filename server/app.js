@@ -94,11 +94,6 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
 
   const lang = req.query.slang;
 
-  if (proxiedLangs[lang]) {
-    var url = "http://svc.webspellchecker.net" + req.url;
-    return req.pipe(request(url)).pipe(res);
-  }
-
   const spellchecker = spellcheckers[lang];
 
   if (!spellchecker) {

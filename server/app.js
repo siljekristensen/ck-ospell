@@ -106,7 +106,7 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
 
   Promise.all(inputWords.map((word) =>
     spellchecker.suggestions(word.trim())
-      .then((res) => ({ "word": word, "suggestions": res }))
+      .then((res) => ({ "word": word, "suggestions": res.slice(0, 10) }))
   ))
     .then((allCorrections) => {
       const corrections = allCorrections

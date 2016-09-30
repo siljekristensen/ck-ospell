@@ -91,7 +91,7 @@ test("Check Spelling: Suggestions for multiple words", (t) =>
   request(app)
     .get(API)
     .query(spellCmd())
-    .query({ slang: "sma_NO", text: "lorem, ipsum" })
+    .query({ slang: "sma_NO", text: "lorem,ipsum" })
     .expect(200)
     .then((res) => {
       t.truthy(Array.isArray(res.body));

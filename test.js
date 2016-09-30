@@ -68,7 +68,7 @@ test("Check Spelling: Suggestions", (t) =>
 
       // Only check the values are all present but ignore the order. (For some
       // reason, the order of suggestions is different on Linux and OS X...)
-      t.deepEqual(s.suggestions.sort(), ['akkusatijvh', 'akkusatijvi', 'akkusativ-D', 'akkusativ-V', 'akkusativ-M', 'akkusativ-L', 'akkusativ-I', 'akkusativ-C'].sort());
+      t.deepEqual(s.suggestions.sort(), ['akkusatijve', 'akkusatijvh', 'akkusatijvi', 'akkusativ-C', 'akkusativ-D', 'akkusativ-I', 'akkusativ-L', 'akkusativ-M', 'akkusativ-X', 'akkusativ-as'].sort());
     })
 );
 
@@ -91,7 +91,7 @@ test("Check Spelling: Suggestions for multiple words", (t) =>
   request(app)
     .get(API)
     .query(spellCmd())
-    .query({ slang: "sma_NO", text: "lorem,ipsum" })
+    .query({ slang: "sma_NO", text: "lorem, ipsum" })
     .expect(200)
     .then((res) => {
       t.truthy(Array.isArray(res.body));
@@ -100,7 +100,7 @@ test("Check Spelling: Suggestions for multiple words", (t) =>
       const s0 = res.body[0];
       t.deepEqual(s0.word, 'lorem');
       t.deepEqual(s0.ud, false);
-      t.deepEqual(s0.suggestions.sort(), ['Florem', 'goerem', 'boerem', 'dyrem', 'gorrem', 'govrem', 'formem', 'bovrem'].sort());
+      t.deepEqual(s0.suggestions.sort(), ['Borem', 'Florem', 'Jorm', 'Morem', 'Norem', 'Torem', 'goerem', 'joem', 'lorvem', 'lovrem'].sort());
 
       // Check ipsum
       const s1 = res.body[1];

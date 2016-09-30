@@ -106,7 +106,7 @@ test("Check Spelling: Suggestions for multiple words", (t) =>
       const s1 = res.body[1];
       t.deepEqual(s1.word, 'ipsum');
       t.deepEqual(s1.ud, false);
-      t.deepEqual(s1.suggestions.sort(), ['Aksum', 'Epsom', 'Hasum', 'Husum', 'Pesum', 'Sippum', 'Sisum', 'Virsum', 'gipsim', 'jipsem'].sort());
+      t.deepEqual(s1.suggestions.sort(), ['Aksum', 'Hasum', 'Sippum', 'Sisum', 'Virsum', 'gipsem', 'gipsim', 'jipsem', 'pps:m', 'ps:m'].sort());
     })
 );
 

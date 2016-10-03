@@ -1,7 +1,6 @@
 "use strict";
 const path = require("path");
 const fs = require("fs");
-const request = require("request");
 const l = require("lodash");
 const hfstospell = require("hfst-ospell-js");
 

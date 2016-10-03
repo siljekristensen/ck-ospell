@@ -2,11 +2,15 @@
 
 This project contains a server based on Node.js that enables you to use the spellcheck-as-you-type extions for CKEditor with [hfst-ospell](https://github.com/hfst/hfst-ospell) dictionaries.
 
-[![Build Status](https://travis-ci.org/killercup/ck-ospell.svg?branch=master)](https://travis-ci.org/killercup/ck-ospell)
+[![Build Status](https://travis-ci.org/divvun/ck-ospell.svg?branch=master)](https://travis-ci.org/divvun/ck-ospell)
 
 ## Install
 
-Since this is based on [hfst-ospell-js](https://github.com/killercup/hfst-ospell-js), you need to have a C++ compiler, python, and `libarchive` installed on your system (see [this Readme](https://github.com/killercup/hfst-ospell-js/blob/master/Readme.md) for more information), as well as use NPM version 3 (or higher). Then, it's just
+Since this is based on
+[hfst-ospell-js](https://github.com/divvun/hfst-ospell-js), you need to have
+a C++ compiler, python, and `libarchive` installed on your system (see
+[this Readme](https://github.com/divvun/hfst-ospell-js/blob/master/Readme.md)
+for more information), as well as use NPM version 3 (or higher). Then, it's just
 
 ```sh
 $ npm install

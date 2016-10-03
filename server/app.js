@@ -9,25 +9,22 @@ const H = require('./helpers');
 
 // - - -
 
-const langDirectory = path.resolve(process.cwd(), "etc");
+const langDirectory = process.env.CKOSPELL_LANG_PATH || path.resolve(process.cwd(), "etc");
 
-const languages = require("./definitions/langs.json");
 const langFiles = fs.readdirSync(langDirectory)
-  .filter((filename) => path.extname(filename) === ".zhfst")
-  .map((filename) => path.basename(filename, ".zhfst"));
+  .filter((filename) => path.extname(filename) === ".zhfst");
 
-const availableLanguages = langFiles.reduce((result, lang) => {
-  if (languages[lang]) {
-    result[lang] = languages[lang];
-  }
-  return result;
-}, {});
+const localeNameMap = {}
+const spellers = {}
 
-const spellcheckers = langFiles.reduce((result, lang) => {
-  const dictionaryFile = path.join(langDirectory, lang + ".zhfst");
-  result[lang] = new hfstospell.SpellChecker(dictionaryFile);
-  return result;
-}, {});
+langFiles.forEach(file => {
+  const fp = path.join(langDirectory, file)
+  const speller = new hfstospell.SpellChecker(fp)
+  const locale = speller.locale()
+
+  localeNameMap[locale] = speller.localeName()
+  spellers[locale] = speller
+})
 
 /**
  * Get Banner
@@ -52,7 +49,7 @@ module.exports.getBanner = function getBanner(req, res) {
 module.exports.getLangList = function getLangList(req, res) {
   res.status(200).jsonp({
     "langList": {
-      "ltr": l.extend({}, availableLanguages),
+      "ltr": l.extend({}, localeNameMap),
       "rtl": {},
     },
     "verLang": 6,
@@ -94,7 +91,7 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
 
   const lang = req.query.slang;
 
-  const spellchecker = spellcheckers[lang];
+  const spellchecker = spellers[lang];
 
   if (!spellchecker) {
     return next({
@@ -112,8 +109,7 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
       const corrections = allCorrections
         .filter((item) => item.suggestions)
         .map((item) => {
-          // TODO: What is the `ud` param in the response? (It's cargo culted
-          //       from <webspellchecker.net>.)
+          // ud stands for user dictionary and can be ignored.
           item.ud = false;
           return item;
         });

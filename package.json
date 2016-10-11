@@ -11,7 +11,7 @@
   "dependencies": {
     "ckeditor": "^4.5.9",
     "express": "^4.13.4",
-    "hfst-ospell-js": "git://github.com/divvun/hfst-ospell-js#d88cea26caa11f2b8b573f7b9250a3be4f64494d",
+    "hfst-ospell-js": "git://github.com/divvun/hfst-ospell-js#32f493ffe88b6a248698bb418b8d8621fed0ebd4",
     "lodash": "^4.13.1",
     "morgan": "^1.7.0",
     "request": "^2.72.0"

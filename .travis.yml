@@ -7,9 +7,9 @@ node_js:
 before_install:
 - sudo apt-get -qq update
 - sudo apt-get install -y libarchive-dev curl
-- curl http://divvun.no/static_files/zhfsts/se.zhfst  > "etc/sme_NO.zhfst"
-- curl http://divvun.no/static_files/zhfsts/smj.zhfst > "etc/smj_NO.zhfst"
-- curl http://divvun.no/static_files/zhfsts/sma.zhfst > "etc/sma_NO.zhfst"
+- cd etc && curl -O http://divvun.no/static_files/zhfsts/se.zhfst 
+- cd etc && curl -O http://divvun.no/static_files/zhfsts/smj.zhfst
+- cd etc && curl -O http://divvun.no/static_files/zhfsts/sma.zhfst
 - npm i -g npm
 notifications:
   email:

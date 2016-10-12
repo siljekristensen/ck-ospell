@@ -36,7 +36,7 @@ test("Get Lang List", () =>
         ltr: {
           sma: 'Giellatekno/Divvun/UiT fst-based speller for Southern Sami',
           se: 'Giellatekno/Divvun/UiT fst-based speller for Northern Sami',
-          smj: 'Giellatekno/Divvun/UiT fst-based speller for Lule Sami'
+          smj: 'Giellatekno/Divvun/UiT fst-based speller for Lule Sami',
         },
         rtl: {},
       },

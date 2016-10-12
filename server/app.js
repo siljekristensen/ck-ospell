@@ -101,8 +101,14 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
   const inputWords = req.query.text.split(",");
 
   Promise.all(inputWords.map((word) =>
-    spellchecker.suggestions(word.trim())
-      .then((res) => ({ "word": word, "suggestions": res.slice(0, 10) }))
+    spellchecker
+      .suggestions(word.trim())
+      .then(res => {
+        return {
+          word,
+          suggestions: (res || []).slice(0, 10)
+        }
+      })
   ))
     .then((allCorrections) => {
       const corrections = allCorrections

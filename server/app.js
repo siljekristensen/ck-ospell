@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const l = require("lodash");
 const hfstospell = require("hfst-ospell-js");
+const Promise = require("bluebird");
 
 const H = require('./helpers');
 
@@ -100,26 +101,24 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
 
   const inputWords = req.query.text.split(",");
 
-  Promise.all(inputWords.map((word) =>
-    spellchecker
-      .suggestions(word.trim())
+  Promise.map(inputWords, word => {
+    return spellchecker.suggestions(word.trim())
       .then(res => {
-        return {
-          word,
-          suggestions: (res || []).slice(0, 10)
+        if (Array.isArray(res)) {
+          res = res.slice(0, 10)
         }
-      })
-  ))
-    .then((allCorrections) => {
-      const corrections = allCorrections
-        .filter((item) => item.suggestions)
-        .map((item) => {
-          // ud stands for user dictionary and can be ignored.
-          item.ud = false;
-          return item;
-        });
 
-      res.status(200).jsonp(corrections);
-    })
-    .catch(next);
+        return { word, suggestions: res }
+      })
+  }).then(allCorrections => {
+    const corrections = allCorrections
+      .filter((item) => item.suggestions)
+      .map((item) => {
+        // ud stands for user dictionary and can be ignored.
+        item.ud = false;
+        return item;
+      });
+
+    res.status(200).jsonp(corrections);
+  }).catch(next);
 }

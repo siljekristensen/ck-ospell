@@ -9,6 +9,7 @@
   "author": "Pascal Hertleif <killercup@gmail.com> (http://pascalhertleif.de/)",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.4.6",
     "ckeditor": "^4.5.9",
     "express": "^4.13.4",
     "hfst-ospell-js": "git://github.com/divvun/hfst-ospell-js#7cc91377b779e1b59dfd454d7dd12c2608265826",

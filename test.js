@@ -34,9 +34,9 @@ test("Get Lang List", () =>
     .expect({
       langList: {
         ltr: {
-          sma_NO: 'South Sámi',
-          sme_NO: 'Northern Sámi',
-          smj_NO: 'Lule Sámi',
+          sma: 'Giellatekno/Divvun/UiT fst-based speller for Southern Sami',
+          se: 'Giellatekno/Divvun/UiT fst-based speller for Northern Sami',
+          smj: 'Giellatekno/Divvun/UiT fst-based speller for Lule Sami'
         },
         rtl: {},
       },

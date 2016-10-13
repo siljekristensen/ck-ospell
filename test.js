@@ -34,9 +34,9 @@ test("Get Lang List", () =>
     .expect({
       langList: {
         ltr: {
-          sma_NO: 'South Sámi',
-          sme_NO: 'Northern Sámi',
-          smj_NO: 'Lule Sámi',
+          sma: 'Giellatekno/Divvun/UiT fst-based speller for Southern Sami',
+          se: 'Giellatekno/Divvun/UiT fst-based speller for Northern Sami',
+          smj: 'Giellatekno/Divvun/UiT fst-based speller for Lule Sami',
         },
         rtl: {},
       },
@@ -48,7 +48,7 @@ test("Check Spelling: Correct Word", () =>
   request(app)
     .get(API)
     .query(spellCmd())
-    .query({ slang: "sma_NO", text: "akkusatijvh" })
+    .query({ slang: "sma", text: "akkusatijvh" })
     .expect(200)
     .expect([])
 );
@@ -57,7 +57,7 @@ test("Check Spelling: Suggestions", (t) =>
   request(app)
     .get(API)
     .query(spellCmd())
-    .query({ slang: "sma_NO", text: "akkusativa" })
+    .query({ slang: "sma", text: "akkusativa" })
     .expect(200)
     .then((res) => {
       t.truthy(Array.isArray(res.body));
@@ -76,7 +76,7 @@ test("Check Spelling: Empty Suggestions", () =>
   request(app)
     .get(API)
     .query(spellCmd())
-    .query({ slang: "sma_NO", text: "apfelkuchen" })
+    .query({ slang: "sma", text: "apfelkuchen" })
     .expect(200)
     .expect([
       {
@@ -91,7 +91,7 @@ test("Check Spelling: Suggestions for multiple words", (t) =>
   request(app)
     .get(API)
     .query(spellCmd())
-    .query({ slang: "sma_NO", text: "lorem,ipsum" })
+    .query({ slang: "sma", text: "lorem,ipsum" })
     .expect(200)
     .then((res) => {
       t.truthy(Array.isArray(res.body));

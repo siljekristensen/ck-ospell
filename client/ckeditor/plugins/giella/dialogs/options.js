@@ -105,7 +105,7 @@ CKEDITOR.dialog.add( 'giellaDialog', function( editor ) {
 						type: 'html',
 						id: 'langBox',
 						style: 'overflow: hidden; white-space: normal;margin-bottom:15px;',
-						html: '<div><div style="float:left;width:45%;margin-left:5px;" id="left-col-' + editor.name + '"></div><div style="float:left;width:45%;margin-left:15px;" id="right-col-' + editor.name + '"></div></div>',
+						html: '<div><div style="float:left;width:95%;margin-left:5px;" id="left-col-' + editor.name + '"></div><div style="float:left;width:95%;margin-left:5px;" id="right-col-' + editor.name + '"></div></div>',
 						onShow: function() {
 							var giella_instance =  editor.giella;
 							var lang = giella_instance.getLang(),

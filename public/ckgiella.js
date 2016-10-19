@@ -111,7 +111,8 @@ var GIELLA = GIELLA || function(a) {
             userDictionaryName: f(null, !1),
             giellaLogo: f("css/divvun-logo.png", !1),
             giellaVersion: f("3.1.8436", !1),
-            lang: f("en_US", !0),
+/*          lang: f("en_US", !0), */
+            lang: f("se", !0),
             maxSuggestionsDefault: f(5, !1),
             minWordLength: f(4, !1),
             permanentMinWordLength: f({

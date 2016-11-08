@@ -12,7 +12,7 @@
     "bluebird": "^3.4.6",
     "ckeditor": "^4.5.9",
     "express": "^4.13.4",
-    "hfst-ospell-js": "git://github.com/divvun/hfst-ospell-js#01ab14614b3069eb524e5a909165a24acc3bff9f",
+    "hfst-ospell-js": "git://github.com/divvun/hfst-ospell-js#alphabet-hack",
     "lodash": "^4.13.1",
     "morgan": "^1.7.0",
     "request": "^2.72.0"

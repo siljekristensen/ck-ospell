@@ -568,7 +568,7 @@ CKEDITOR.plugins.add('giella', {
 		}
 
 		if(!editor.config.giella_sLang) {
-			editor.config.giella_sLang = 'en_US';
+			editor.config.giella_sLang = 'se'; // Northern Sámi as default
 		}
 
 		if(editor.config.giella_maxSuggestions === undefined || typeof editor.config.giella_maxSuggestions != 'number' || editor.config.giella_maxSuggestions < 0) {

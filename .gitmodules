@@ -1,0 +1,3 @@
+[submodule "client/ckeditor/plugins/giella"]
+	path = client/ckeditor/plugins/giella
+	url = https://github.com/divvun/ckeditor-plugin-giella-scayt

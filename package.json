@@ -11,8 +11,8 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "ckeditor": "^4.5.9",
+    "divvunspell": "git://github.com/divvun/divvunspell-nodejs#master",
     "express": "^4.13.4",
-    "hfst-ospell-js": "git://github.com/divvun/hfst-ospell-js#alphabet-hack",
     "lodash": "^4.13.1",
     "morgan": "^1.7.0",
     "request": "^2.72.0"

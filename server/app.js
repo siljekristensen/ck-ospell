@@ -2,7 +2,7 @@
 const path = require("path");
 const fs = require("fs");
 const l = require("lodash");
-const hfstospell = require("hfst-ospell-js");
+const SpellChecker = require("divvunspell");
 const Promise = require("bluebird");
 
 const H = require('./helpers');
@@ -19,10 +19,10 @@ const spellers = {}
 
 langFiles.forEach(file => {
   const fp = path.join(langDirectory, file)
-  const speller = new hfstospell.SpellChecker(fp)
-  const locale = speller.locale()
+  const speller = new SpellChecker(fp)
+  const locale = speller.locale
 
-  localeNameMap[locale] = speller.localeName()
+  localeNameMap[locale] = speller.localeName
   spellers[locale] = speller
 })
 
@@ -102,14 +102,16 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
   const inputWords = req.query.text.split(",");
 
   Promise.map(inputWords, word => {
-    return spellchecker.suggestions(word.trim())
-      .then(res => {
-        if (Array.isArray(res)) {
-          res = res.slice(0, 10)
-        }
-
-        return { word, suggestions: res }
-      })
+    return spellchecker.isCorrect(word.trim()).then(isCorrect => {
+      if (isCorrect) {
+        return { word, suggestions: null }
+      } else {
+        return spellchecker.suggest(word.trim())
+          .then(res => {
+            return { word, suggestions: res.slice(0, 10) }
+          })
+      }
+    })
   }).then(allCorrections => {
     const corrections = allCorrections
       .filter((item) => item.suggestions)

@@ -6,11 +6,7 @@ This project contains a server based on Node.js that enables you to use the spel
 
 ## Install
 
-Since this is based on
-[hfst-ospell-js](https://github.com/divvun/hfst-ospell-js), you need to have
-a C++ compiler, python, and `libarchive` installed on your system (see
-[this Readme](https://github.com/divvun/hfst-ospell-js/blob/master/Readme.md)
-for more information), as well as use NPM version 3 (or higher). Then, it's just
+Ensure you have the latest Rust master toolchain - get it from https://rustup.rs.
 
 ```sh
 $ npm install
@@ -42,7 +38,7 @@ By conventions, all dictionary files need to be
 
 - placed in the local `etc/` directory,
 - called `LANG_COUNTRY.zhfst`,
-- and, of couse, be valid (compressed) HFST files.
+- and, of couse, be valid (**stored, without compression**) ZHFST files.
 
 You can find several dictionaries on [divvun.no](http://www.divvun.no/korrektur/otherapps.html). Many are under the GPL, for some there is no license specified, though.
 

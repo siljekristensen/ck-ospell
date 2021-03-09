@@ -20,6 +20,7 @@
   "devDependencies": {
     "ava": "^0.15.1",
     "eslint": "^2.10.2",
+    "neon-cli": "^0.7.1",
     "supertest": "^1.2.0",
     "supertest-as-promised": "^3.1.0"
   }

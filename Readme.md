@@ -6,13 +6,13 @@ This project contains a server based on Node.js that enables you to use the spel
 
 ## Install
 
-Ensure you have the latest Rust master toolchain - get it from https://rustup.rs.
+- Go to <https://rustup.rs> and install the stable Rust toolchain.
 
 ```sh
+$ git submodule init
+$ git submodule update
 $ npm install
 ```
-
-For instructions on how to install the CKEditor plugin, please see the `Readme.md` file in `client/ckeditor/plugins/giella/`.
 
 ## Running Example
 

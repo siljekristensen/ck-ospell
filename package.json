@@ -9,13 +9,13 @@
   "author": "Pascal Hertleif <killercup@gmail.com> (http://pascalhertleif.de/)",
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.4.6",
-    "ckeditor": "^4.5.9",
-    "divvunspell": "git://github.com/divvun/divvunspell-nodejs#master",
-    "express": "^4.13.4",
-    "lodash": "^4.13.1",
-    "morgan": "^1.7.0",
-    "request": "^2.72.0"
+    "bluebird": "^3.7.2",
+    "ckeditor": "^4.12.1",
+    "divvunspell": "git://github.com/divvun/divvunspell-nodejs.git#master",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "ava": "^0.15.1",

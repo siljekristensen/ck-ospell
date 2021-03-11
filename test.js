@@ -114,3 +114,13 @@ test("Check Spelling: Suggestions for multiple words", async t => {
   t.deepEqual(s1.suggestions.sort(), ['Aksum', 'Epsom', 'Hasum', 'Husum', 'Pesum', 'Sippum', 'Sisum', 'gipsem', 'gipsim', 'jipsem'].sort());
 
 });
+
+test("Check Spelling: Remove quote marks", async t => {
+  const response = await request(app)
+    .get(API)
+    .query(spellCmd())
+    .query({ slang: "sma", text: "«akkusatijvh»«»“”‘’" })
+
+  t.is(response.status, 200)
+  t.deepEqual(response.body, [])
+});

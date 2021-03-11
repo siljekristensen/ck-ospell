@@ -99,7 +99,8 @@ module.exports.checkSpelling = function checkSpelling(req, res, next) {
     });
   }
 
-  const inputWords = req.query.text.split(",");
+  const quoteMarks = /[«»“”‘’]/g;
+  const inputWords = req.query.text.replace(quoteMarks, '').split(",");
 
   Promise.map(inputWords, word => {
     return spellchecker.isCorrect(word.trim()).then(isCorrect => {

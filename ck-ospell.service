@@ -1,0 +1,15 @@
+[Unit]
+Description=Online spell checker for fst based speller
+Documentation=https://github.com/divvun/ck-ospell
+After=network.target
+
+[Service]
+Environment="NODE_PORT=3001"
+Environment="CKOSPELL_LANG_PATH=/home/speller/ck-ospell/divvun_no"
+Type=simple
+User=boerre
+ExecStart=/home/speller/.nvm/versions/node/v14.15.0/bin/node /home/speller/ck-ospell/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -19,11 +19,16 @@ const spellers = {}
 
 langFiles.forEach(file => {
   const fp = path.join(langDirectory, file)
-  const speller = new SpellChecker(fp)
-  const locale = speller.locale
+  try {
+    const speller = new SpellChecker(fp)
+    const locale = speller.locale
 
-  localeNameMap[locale] = speller.localeName
-  spellers[locale] = speller
+    localeNameMap[locale] = speller.localeName
+    spellers[locale] = speller
+  } catch(error) {
+    process.stdout.write(`Cannot load ${fp}\n`)
+    process.stdout.write(`${error.message}`)
+  }
 })
 
 /**

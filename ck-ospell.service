@@ -4,11 +4,13 @@ Documentation=https://github.com/divvun/ck-ospell
 After=network.target
 
 [Service]
+User=speller
+WorkingDirectory=/home/speller/ck-ospell/
+Environment="NODE_VERSION=14.15.0"
 Environment="NODE_PORT=3001"
-Environment="CKOSPELL_LANG_PATH=/home/speller/ck-ospell/divvun_no"
+Environment="CKOSPELL_LANG_PATH=divvun_no"
 Type=simple
-User=boerre
-ExecStart=/home/speller/.nvm/versions/node/v14.15.0/bin/node /home/speller/ck-ospell/server.js
+ExecStart=/home/speller/.nvm/nvm-exec node .
 Restart=on-failure
 
 [Install]

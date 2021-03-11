@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 
+const port = process.env.NODE_PORT || 3000;
 const server = express();
 
 server.use(morgan('combined'));
@@ -24,6 +25,6 @@ server.use(express.static(
 const routes = require("./server/index");
 server.use(routes);
 
-server.listen(3000, () => {
-  process.stdout.write("Server started!");
+server.listen(port, () => {
+  process.stdout.write("Server started at port " + port + "!");
 });

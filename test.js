@@ -35,8 +35,6 @@ test("Get Lang List", () =>
       langList: {
         ltr: {
           sma: 'Giellatekno/Divvun/UiT fst-based speller for Southern Sami',
-          se: 'Giellatekno/Divvun/UiT fst-based speller for Northern Sami',
-          smj: 'Giellatekno/Divvun/UiT fst-based speller for Lule Sami',
         },
         rtl: {},
       },
@@ -68,9 +66,10 @@ test("Check Spelling: Suggestions", (t) =>
 
       // Only check the values are all present but ignore the order. (For some
       // reason, the order of suggestions is different on Linux and OS X...)
-      t.deepEqual(s.suggestions.sort(), ['akkusatijve', 'akkusatijvh', 'akkusatijvi', 'akkusativ-C', 'akkusativ-D', 'akkusativ-I', 'akkusativ-L', 'akkusativ-M', 'akkusativ-X', 'akkusativ-as'].sort());
+      t.deepEqual(s.suggestions.sort(), ['akkusatijve', 'akkusatijvh', 'akkusatijvi', 'akkusativ-C', 'akkusativ-D', 'akkusativ-I', 'akkusativ-L', 'akkusativ-M', 'akkusativ-V', 'akkusativ-X'].sort());
     })
 );
+
 
 test("Check Spelling: Empty Suggestions", () =>
   request(app)
@@ -100,13 +99,12 @@ test("Check Spelling: Suggestions for multiple words", (t) =>
       const s0 = res.body[0];
       t.deepEqual(s0.word, 'lorem');
       t.deepEqual(s0.ud, false);
-      t.deepEqual(s0.suggestions.sort(), ['Borem', 'Florem', 'Jorm', 'Morem', 'Norem', 'Torem', 'goerem', 'joem', 'lorvem', 'lovrem'].sort());
+      t.deepEqual(s0.suggestions.sort(), ['Borem', 'Doram', 'Floram', 'Florem', 'Morem', 'Norem', 'Torem', 'lorvem', 'lovrem', 'låvrem'].sort());
 
       // Check ipsum
       const s1 = res.body[1];
       t.deepEqual(s1.word, 'ipsum');
       t.deepEqual(s1.ud, false);
-      t.deepEqual(s1.suggestions.sort(), ['Aksum', 'Hasum', 'Sippum', 'Sisum', 'Virsum', 'gipsem', 'gipsim', 'jipsem', 'pps:m', 'ps:m'].sort());
+      t.deepEqual(s1.suggestions.sort(), ['Aksum', 'Epsom', 'Hasum', 'Husum', 'Pesum', 'Sippum', 'Sisum', 'gipsem', 'gipsim', 'jipsem'].sort());
     })
 );
-

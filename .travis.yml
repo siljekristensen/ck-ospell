@@ -1,15 +1,21 @@
-sudo: required
 dist: trusty
+
 language: node_js
+
 node_js:
-- "6"
+  - node
+
 before_install:
-- sudo apt-get -qq update
-- sudo apt-get install -y libarchive-dev curl
-- curl http://divvun.no/static_files/zhfsts/se.zhfst  > "etc/sme_NO.zhfst"
-- curl http://divvun.no/static_files/zhfsts/smj.zhfst > "etc/smj_NO.zhfst"
-- curl http://divvun.no/static_files/zhfsts/sma.zhfst > "etc/sma_NO.zhfst"
-- npm i -g npm
+  # Install Rust and Cargo
+  - curl https://sh.rustup.rs -sSf > /tmp/rustup.sh
+  - sh /tmp/rustup.sh -y
+  - export PATH="$HOME/.cargo/bin:$PATH"
+  - source "$HOME/.cargo/env"
+  # Install NPM packages
+  - node -v
+  - npm -v
+  - npm install
+
 notifications:
   email:
     on_success: never

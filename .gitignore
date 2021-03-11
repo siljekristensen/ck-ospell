@@ -5,3 +5,6 @@ typings/
 .DS_Store
 .tmp
 .swp
+
+divvun_no/
+divvun_org/

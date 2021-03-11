@@ -3,7 +3,7 @@ dist: trusty
 language: node_js
 
 node_js:
-  - node
+  - lts/*
 
 before_install:
   # Install Rust and Cargo

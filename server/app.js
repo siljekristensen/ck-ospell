@@ -1,9 +1,9 @@
 "use strict";
 const path = require("path");
-const fs = require("fs");
 const l = require("lodash");
 const SpellChecker = require("divvunspell");
 const Promise = require("bluebird");
+const chokidar = require("chokidar")
 
 const H = require('./helpers');
 
@@ -11,25 +11,45 @@ const H = require('./helpers');
 
 const langDirectory = process.env.CKOSPELL_LANG_PATH || path.resolve(process.cwd(), "etc");
 
-const langFiles = fs.readdirSync(langDirectory)
-  .filter((filename) => path.extname(filename) === ".zhfst");
-
+const filenameMap = {}
 const localeNameMap = {}
 const spellers = {}
 
-langFiles.forEach(file => {
-  const fp = path.join(langDirectory, file)
+const addFile = fp => {
   try {
     const speller = new SpellChecker(fp)
     const locale = speller.locale
 
+    filenameMap[fp] = locale
     localeNameMap[locale] = speller.localeName
     spellers[locale] = speller
   } catch(error) {
     process.stdout.write(`Cannot load ${fp}\n`)
-    process.stdout.write(`${error.message}`)
+    process.stdout.write(`${error.message}\n`)
   }
-})
+}
+
+const removeFile = fp => {
+  const locale = filenameMap[fp]
+
+  delete filenameMap[fp]
+  delete localeNameMap[locale]
+  delete spellers[locale]
+}
+
+chokidar.watch(langDirectory + '/*.zhfst', {awaitWriteFinish: true})
+  .on('add', path => {
+    process.stdout.write(`Add, ${path}\n`)
+    addFile(path)
+  })
+  .on('change', path => {
+    process.stdout.write(`Update, ${path}\n`)
+    addFile(path)
+  })
+  .on('unlink', path => {
+    process.stdout.write(`Remove, ${path}\n`)
+    removeFile(path)
+  });
 
 /**
  * Get Banner

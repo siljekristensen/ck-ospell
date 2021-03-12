@@ -19,7 +19,7 @@ const spellCmd = () => ({
   'out_type': "words",
 });
 
-test("Get Banner", async t => {
+test.serial("Get Banner", async t => {
   const response = await request(app)
     .get(API)
     .query(cmd("getbanner"));

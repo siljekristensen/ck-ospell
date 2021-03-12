@@ -26,5 +26,5 @@ const routes = require("./server/index");
 server.use(routes);
 
 server.listen(port, () => {
-  process.stdout.write("Server started at port " + port + "!");
+  process.stdout.write("Server started at port " + port + "!\n");
 });

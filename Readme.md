@@ -2,8 +2,6 @@
 
 This project contains a server based on Node.js that enables you to use the spellcheck-as-you-type extions for CKEditor with [hfst-ospell](https://github.com/hfst/hfst-ospell) dictionaries.
 
-[![Build Status](https://travis-ci.org/divvun/ck-ospell.svg?branch=master)](https://travis-ci.org/divvun/ck-ospell)
-
 ## Install
 
 - Go to <https://rustup.rs> and install the stable Rust toolchain.
